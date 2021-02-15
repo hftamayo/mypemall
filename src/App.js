@@ -3,6 +3,7 @@ import './App.css';
 import Routing from './Contenedores/Routing';
 import { Box, Grommet } from 'grommet';
 import PageHeader from './Contenedores/Routing/PageHeader';
+import PageFooter from './Contenedores/Routing/PageFooter';
 import { HashRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { themes } from './utils';
@@ -17,6 +18,7 @@ function App() {
         <Box pad="medium">
           <Routing />
         </Box>
+        <PageFooter />
       </HashRouter>
     </Grommet>
   );

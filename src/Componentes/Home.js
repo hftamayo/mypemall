@@ -7,7 +7,6 @@ function Home() {
             <h3>Sitio de E-Commerce Para la Micro y Pequeña Empresa</h3>
             <h6>Bienvenido Invitado, por favor 
                 registrese o ingrese sus credenciales</h6>            
-
         </div>
     )
 }
