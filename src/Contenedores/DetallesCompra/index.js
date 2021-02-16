@@ -1,18 +1,16 @@
 import { Box } from 'grommet';
 import React from 'react';
-import ProductosProvider from './Context';
+import DetallesCompraProvider from './Context';
 import Form from './Form';
-import List from './List';
 
-function Productos() {
+function DetallesCompra() {
   return (
-    <ProductosProvider>
+    <DetallesCompraProvider>
       <Box direction="row" pad="medium" gap="medium">
-        <List />
         <Form />
       </Box>
-    </ProductosProvider>
+    </DetallesCompraProvider>
   );
 }
 
-export default Productos;
+export default DetallesCompra;

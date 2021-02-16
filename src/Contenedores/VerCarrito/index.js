@@ -4,7 +4,7 @@ import ProductosProvider from './Context';
 import Form from './Form';
 import List from './List';
 
-function Productos() {
+function Clientes() {
   return (
     <ProductosProvider>
       <Box direction="row" pad="medium" gap="medium">
@@ -15,4 +15,4 @@ function Productos() {
   );
 }
 
-export default Productos;
+export default Clientes;

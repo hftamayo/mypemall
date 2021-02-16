@@ -10,6 +10,9 @@ import Clientes from '../Clientes';
 import NuevoCliente from '../NuevoCliente';
 import AccesoCredencial from '../AccesoCredencial';
 import Productos from '../Productos';
+import Comprar from '../Comprar';
+import DetallesCompra from '../DetallesCompra';
+import VerCarrito from '../VerCarrito';
 
 function Routing() {
     return (
@@ -34,6 +37,17 @@ function Routing() {
             <Productos />
             </Route>                  
 
+            <Route path="/comprar">
+            <Comprar />
+            </Route>          
+
+            <Route path="/detallecompra/:idProd/:nProd">
+            <DetallesCompra />
+            </Route>                      
+
+            <Route path="/vercarrito">
+            <VerCarrito />
+            </Route>                              
             
             <PrivateRoute path="/workers">
                 <Workers />
