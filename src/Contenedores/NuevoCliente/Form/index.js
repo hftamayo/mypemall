@@ -3,34 +3,34 @@ import { StatusCritical, StatusGood } from 'grommet-icons';
 import React, { useContext } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import { log } from '../../../utils';
-import { MedcertsContext } from '../Context';
-import { createEntry, updateEntry } from '../sdk/managementAPI';
+import { ClientesContext } from '../Context';
+import { createEntry } from '../sdk/managementAPI';
 import FormLayout from './FormLayout';
 import { useHistory } from 'react-router-dom';
 
 function Form() {
-  const viewMedcert = useHistory();
+  const viewHome = useHistory();
   const {
     current: [current],
-  } = useContext(MedcertsContext);
+  } = useContext(ClientesContext);
 
   const queryClient = useQueryClient();
 
   const mutation = useMutation(
 
-   function ({ data, idMedcert }) {
-    if (!idMedcert) {
+   function ({ data, codigoCliente }) {
+    if (!codigoCliente) {
       return createEntry(data);
     } else {
-      return updateEntry(idMedcert, data);
+      //return updateEntry(idMedcert, data);
     }
   },
 
     {
       onSuccess: function () {
-        log('success', 'Action performed successfully');
-        queryClient.invalidateQueries('fetchMedcerts');
-        viewMedcert.push(`/vermedcerts/`);
+        log('Informacion', 'Accion completada');
+        queryClient.invalidateQueries('fetchClientes');
+        viewHome.push(`/`);
       },
       onError: function (err) {
         console.error(err);
@@ -42,19 +42,14 @@ function Form() {
   const isAddMode = !current.id;
 
   const onSubmit = (values) => {
-    console.log('values submitted', values);
+    console.log('valores enviados', values);
 
     const payload = {
       //casting de objetos text que en el backend son int
      ...values,
-     idMedCert: parseInt(values.idMedCert, 10),
-     daysOffMedCert: parseInt(values.daysOffMedCert, 10),
+     codigoCliente: parseInt(values.idMedCert, 10),
     };
-    delete payload.createdAt;
-    delete payload.updatedAt;
-    //ancla: estos valores debo modificarlos para la funcion oneToMany
-    delete payload.poster;
-    delete payload.cast;
+    delete payload.cclaveCliente;
     delete payload.id;
 
     console.log({ values, payload });
@@ -62,7 +57,7 @@ function Form() {
     if (isAddMode) {
       mutation.mutate({ data: payload });
     } else {
-      mutation.mutate({ data: payload, idMedCert: current.id});
+      mutation.mutate({ data: payload, codigoCliente: current.id});
     }
   };
 
@@ -71,7 +66,7 @@ function Form() {
       {mutation.isSuccess && (
         <Box direction="row" gap="medium">
           <Text color="brand">
-            Med Certificate created successfully... <StatusGood color="brand" />
+            El perfil del cliente ha sido creado! <StatusGood color="brand" />
           </Text>
         </Box>
       )}
@@ -79,7 +74,7 @@ function Form() {
       {mutation.isError && (
         <Box direction="row" gap="medium">
           <Text color="accent-1">
-            An error has occurred... <StatusCritical color="accent-1" />
+            Ha ocurrido un error en la creacion del perfil <StatusCritical color="accent-1" />
           </Text>
         </Box>
       )}

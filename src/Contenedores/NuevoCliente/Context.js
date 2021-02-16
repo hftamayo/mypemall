@@ -1,21 +1,19 @@
 import React, { createContext, useState } from 'react';
 
-export const MedcertsContext = createContext();
+export const ClientesContext = createContext();
 
-function MedcertsProvider(props) {
-  // const [movies, setMovies] = useState([]);
+function ClientesProvider(props) {
   const [current, setCurrent] = useState({});
 
   return (
-    <MedcertsContext.Provider
+    <ClientesContext.Provider
       value={{
-        // movies: [movies, setMovies],
         current: [current, setCurrent],
       }}
     >
       {props.children}
-    </MedcertsContext.Provider>
+    </ClientesContext.Provider>
   );
 }
 
-export default MedcertsProvider;
+export default ClientesProvider;

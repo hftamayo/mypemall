@@ -1,5 +1,4 @@
 import { Box, Button, DateInput, Form, FormField, TextInput } from 'grommet';
-/*import { Clock, Money } from 'grommet-icons';*/
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -8,10 +7,7 @@ function FormLayout({ onSubmit, currentValues }) {
     ...currentValues,
   };
   const [value, setValue] = React.useState(defaultValues);
-
-  const { idEmp, fnEmp }  =  useParams();
-  //console.log("idEmp: " + idEmp);
-
+  
   return (
     <Form
       value={value}
@@ -21,48 +17,42 @@ function FormLayout({ onSubmit, currentValues }) {
       }}
       onReset={() => setValue(defaultValues)}
       onSubmit={(event) => {
-        event.value.idEmployee = idEmp;
         console.log('Submit', event.value, event.touched);
         onSubmit(event.value);
       }}
     >
-      <div>
-        <p>Employee ID: <b><i>{ idEmp }</i></b>
-        , Full name: <b><i>{ fnEmp }</i></b></p>
-      </div>
-
-      <FormField label="Internal ID" name="idMedCert">
-        <TextInput name="idMedCert" />
+      <FormField label="Codigo Afiliado" name="lblcodigoCliente">
+        <TextInput name="codigoCliente" />
       </FormField>
 
-      <FormField label="Medical Service" name="medicalService">
-        <TextInput name="medicalService" />
+
+      <FormField label="Apellidos" name="lblapellidosCliente">
+        <TextInput name="apellidosCliente" />
       </FormField>
 
-      <FormField label="Doctor's Name" name="mdName">
-        <TextInput name="mdName" />
+      <FormField label="Nombres" name="lblnombresCliente">
+        <TextInput name="nombresCliente" />
       </FormField>
 
-      <FormField label="Days Off" name="daysOffMedCert">
-        <TextInput name="daysOffMedCert" />
+      <FormField label="Correo Electronico" name="lblcorreoeCliente">
+        <TextInput name="correoeCliente" />
       </FormField>
 
-      <FormField label="MedCert's Start Date" name="startDateMedCert">
-        <DateInput name="startDateMedCert" format="yyyy-mm-dd" />
+      <FormField label="Fecha Nacimiento" name="lblfnaCliente">
+        <DateInput name="fnaCliente" format="yyyy-mm-dd" />
       </FormField>
 
-      <FormField label="MedCert's End Date" name="endDateMedCert">
-        <DateInput name="endDateMedCert" format="yyyy-mm-dd" />
+      <FormField label="Clave" name="lblclaveCliente">
+        <TextInput name="claveCliente" />
       </FormField>
-      
-      <FormField label="Date of Register" name="recordedDateMedCert">
-        <DateInput name="recordedDateMedCert" format="yyyy-mm-dd" />
-      </FormField>      
-      
+
+      <FormField label="Confirmar Clave" name="lblcclaveCliente">
+        <TextInput name="cclaveCliente" />
+      </FormField>
+
       <Box direction="row" justify="between" margin={{ top: 'medium' }}>
-        <Button label="Cancel" />
-        <Button type="reset" label="Reset" />
-        <Button type="submit" label="Submit" primary />
+        <Button type="reset" label="Resetear" />
+        <Button type="submit" label="Guardar" primary />
       </Box>
     </Form>
   );
