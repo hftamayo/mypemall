@@ -9,6 +9,7 @@ import Home from '../../Componentes/Home';
 import Clientes from '../Clientes';
 import NuevoCliente from '../NuevoCliente';
 import AccesoCredencial from '../AccesoCredencial';
+import Productos from '../Productos';
 
 function Routing() {
     return (
@@ -28,6 +29,10 @@ function Routing() {
             <Route path="/acceder">
             <AccesoCredencial />
             </Route>      
+
+            <Route path="/productos">
+            <Productos />
+            </Route>                  
 
             
             <PrivateRoute path="/workers">
