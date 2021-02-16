@@ -1,5 +1,4 @@
 import { Box, Button, DateInput, Form, FormField, TextInput } from 'grommet';
-/*import { Clock, Money } from 'grommet-icons';*/
 import React from 'react';
 
 function FormLayout({ onSubmit, currentValues }) {
@@ -22,30 +21,38 @@ function FormLayout({ onSubmit, currentValues }) {
         onSubmit(event.value);
       }}
     >
-      <FormField label="ID Number" name="idEmployee">
-        <TextInput name="idEmployee" />
+      <FormField label="Codigo Afiliado" name="lblcodigoCliente">
+        <TextInput name="codigoCliente" />
       </FormField>
 
-      <FormField label="Full Name" name="fullNameEmployee">
-        <TextInput name="fullNameEmployee" />
+
+      <FormField label="Apellidos" name="lblapellidosCliente">
+        <TextInput name="apellidosCliente" />
       </FormField>
 
-      <FormField label="Job Title" name="jobTitleEmployee">
-        <TextInput name="jobTitleEmployee" />
+      <FormField label="Nombres" name="lblnombresCliente">
+        <TextInput name="nombresCliente" />
       </FormField>
 
-      <FormField label="National ID Number" name="nationalIdNumber">
-        <TextInput name="nationalIdNumber" />
+      <FormField label="Correo Electronico" name="lblcorreoeCliente">
+        <TextInput name="correoeCliente" />
       </FormField>
 
-      <FormField label="Hire date" name="hireDateEmployee">
-        <DateInput name="hireDateEmployee" format="yyyy-mm-dd" />
+      <FormField label="Fecha Nacimiento" name="lblfnaCliente">
+        <DateInput name="fnaCliente" format="yyyy-mm-dd" />
+      </FormField>
+
+      <FormField label="Clave" name="lblclaveCliente">
+        <TextInput name="claveCliente" />
+      </FormField>
+
+      <FormField label="Confirmar Clave" name="lblcclaveCliente">
+        <TextInput name="cclaveCliente" />
       </FormField>
 
       <Box direction="row" justify="between" margin={{ top: 'medium' }}>
-        <Button label="Cancel" />
-        <Button type="reset" label="Reset" />
-        <Button type="submit" label="Submit" primary />
+        <Button type="reset" label="Resetear" />
+        <Button type="submit" label="Guardar" primary />
       </Box>
     </Form>
   );

@@ -3,32 +3,34 @@ import { StatusCritical, StatusGood } from 'grommet-icons';
 import React, { useContext } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import { log } from '../../../utils';
-import { ClientesContext } from '../Context';
+import { MedcertsContext } from '../Context';
 import { createEntry, updateEntry } from '../sdk/managementAPI';
 import FormLayout from './FormLayout';
+import { useHistory } from 'react-router-dom';
 
 function Form() {
+  const viewMedcert = useHistory();
   const {
     current: [current],
-  } = useContext(ClientesContext);
+  } = useContext(MedcertsContext);
 
   const queryClient = useQueryClient();
 
   const mutation = useMutation(
 
-   function ({ data, codigoCliente }) {
-    if (!codigoCliente) {
+   function ({ data, idMedcert }) {
+    if (!idMedcert) {
       return createEntry(data);
     } else {
-      console.log("Actualizar datos del cliente: " + codigoCliente);
-      return updateEntry(codigoCliente, data);
+      return updateEntry(idMedcert, data);
     }
   },
 
     {
       onSuccess: function () {
-        log('confirmacion', 'La accion fue ejecutada satisfactoriamente');
-        queryClient.invalidateQueries('fetchClientes');
+        log('success', 'Action performed successfully');
+        queryClient.invalidateQueries('fetchMedcerts');
+        viewMedcert.push(`/vermedcerts/`);
       },
       onError: function (err) {
         console.error(err);
@@ -40,21 +42,27 @@ function Form() {
   const isAddMode = !current.id;
 
   const onSubmit = (values) => {
-    console.log('valores enviados', values);
+    console.log('values submitted', values);
 
     const payload = {
       //casting de objetos text que en el backend son int
      ...values,
-     codigoCliente: parseInt(values.codigoCliente, 10),
+     idMedCert: parseInt(values.idMedCert, 10),
+     daysOffMedCert: parseInt(values.daysOffMedCert, 10),
     };
-    //este objeto debe eliminarse del payload puesto que no existe en el backend
-    delete payload.cclaveCliente;
+    delete payload.createdAt;
+    delete payload.updatedAt;
+    //ancla: estos valores debo modificarlos para la funcion oneToMany
+    delete payload.poster;
+    delete payload.cast;
+    delete payload.id;
+
     console.log({ values, payload });
 
     if (isAddMode) {
       mutation.mutate({ data: payload });
     } else {
-      mutation.mutate({ data: payload, codigoCliente: current.id});
+      mutation.mutate({ data: payload, idMedCert: current.id});
     }
   };
 
@@ -63,7 +71,7 @@ function Form() {
       {mutation.isSuccess && (
         <Box direction="row" gap="medium">
           <Text color="brand">
-            Perfil del Cliente creado satisfactoriamente... <StatusGood color="brand" />
+            Med Certificate created successfully... <StatusGood color="brand" />
           </Text>
         </Box>
       )}
@@ -71,7 +79,7 @@ function Form() {
       {mutation.isError && (
         <Box direction="row" gap="medium">
           <Text color="accent-1">
-            Error en el proceso de creacion del perfil... <StatusCritical color="accent-1" />
+            An error has occurred... <StatusCritical color="accent-1" />
           </Text>
         </Box>
       )}

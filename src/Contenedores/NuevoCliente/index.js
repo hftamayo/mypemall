@@ -1,18 +1,16 @@
 import { Box } from 'grommet';
 import React from 'react';
-import ClientesProvider from './Context';
+import MedcertsProvider from './Context';
 import Form from './Form';
-import List from './List';
 
-function Clientes() {
+function Medcerts() {
   return (
-    <ClientesProvider>
+    <MedcertsProvider>
       <Box direction="row" pad="medium" gap="medium">
-        <List />
         <Form />
       </Box>
-    </ClientesProvider>
+    </MedcertsProvider>
   );
 }
 
-export default Clientes;
+export default Medcerts;

@@ -3,7 +3,7 @@ import { AddCircle, Refresh, StatusCritical } from 'grommet-icons';
 import React, { useContext } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { log } from '../../../utils';
-import { WorkersContext } from '../Context';
+import { ClientesContext } from '../Context';
 import { getEntries } from '../sdk/deliveryAPI';
 import { deleteEntry } from '../sdk/managementAPI';
 import Table from './Table';
@@ -11,10 +11,10 @@ import Table from './Table';
 function List() {
   const {
     current: [, setCurrent],
-  } = useContext(WorkersContext);
+  } = useContext(ClientesContext);
 
   const { data, isFetching, error, isLoading } = useQuery(
-    'fetchWorkers',
+    'fetchClientes',
     function () {
       return getEntries();
     }
@@ -29,7 +29,7 @@ function List() {
     {
       onSuccess: function () {
         log('info', 'Action performed successfully');
-        queryClient.invalidateQueries('fetchWorkers');
+        queryClient.invalidateQueries('fetchClientes');
       },
       onError: function (err) {
         console.error(err);
@@ -38,19 +38,19 @@ function List() {
     }
   );
 
-  const deleteWorker = (id) => {
+  const deleteCliente = (id) => {
     deleteMutation.mutate(id);
   };
 
-  const setCurrentWorker = (worker) => {
-    setCurrent(worker);
+  const setCurrentCliente = (cliente) => {
+    setCurrent(cliente);
   };
 
   if (isLoading) {
     return (
       <Box direction="row" gap="medium">
         <Text color="accent-1">
-          Loading... <Refresh color="accent-1" />
+          Cargando... <Refresh color="accent-1" />
         </Text>
       </Box>
     );
@@ -60,7 +60,7 @@ function List() {
     return (
       <Box direction="row" gap="medium">
         <Text color="accent-2">
-          An error has occurred... <StatusCritical color="accent-2" />
+          Error en el proceso de carga... <StatusCritical color="accent-2" />
         </Text>
       </Box>
     );
@@ -71,7 +71,7 @@ function List() {
       {isFetching && (
         <Box direction="row" gap="medium">
           <Text color="accent-2">
-            Fetching data... <Refresh color="accent-2" />
+            Obteniendo los datos... <Refresh color="accent-2" />
           </Text>
         </Box>
       )}
@@ -87,9 +87,9 @@ function List() {
       </Box>
 
       <Table
-        workers={data}
-        setCurrent={setCurrentWorker}
-        deleteWorker={deleteWorker}
+        clientes={data}
+        setCurrent={setCurrentCliente}
+        deleteCliente={deleteCliente}
       />
     </Box>
   );

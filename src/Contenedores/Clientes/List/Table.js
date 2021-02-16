@@ -1,23 +1,22 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Box, Button, DataTable, Text } from 'grommet';
-import { Actions, FormClose, FormEdit, Aid } from 'grommet-icons';
+import { Actions, FormClose, FormEdit } from 'grommet-icons';
 import { DateTime } from 'luxon';
 
-function Table({ workers, setCurrent, deleteWorker }) {
-  const addMedcert = useHistory();
+function Table({ clientes, setCurrent, deleteCliente }) {
+  const addCliente = useHistory();
   return (
     <DataTable
     columns={[
-      { property: 'idEmployee', primary: true, header: <Text>Id</Text> },
-      { property: 'fullNameEmployee', header: <Text>Full name</Text> },
-      { property: 'jobTitleEmployee', header: <Text>Job Title</Text> },
-      { property: 'nationalIdNumber', header: <Text>Nat ID Number</Text> },
+      { property: 'codigoCliente', primary: true, header: <Text>Afiliado</Text> },
+      { property: 'apellidosCliente', header: <Text>Apellidos</Text> },
+      { property: 'nombresCliente', header: <Text>Nombres</Text> },
       {
-        property: 'hireDateEmployee',
-        header: <Text>Hire Date</Text>,
+        property: 'fnaCliente',
+        header: <Text>Fecha de Nac.</Text>,
         render: (row) => {
-          return DateTime.fromISO(row.hireDateEmployee).toLocaleString(
+          return DateTime.fromISO(row.fnaCliente).toLocaleString(
             DateTime.DATE_FULL
           );
         },
@@ -36,25 +35,16 @@ function Table({ workers, setCurrent, deleteWorker }) {
               />
               <Button
                 type="button"
-                onClick={() => deleteWorker(row.id)}
+                onClick={() => deleteCliente(row.id)}
                 icon={<FormClose color="accent-2" />}
                 plain
               />
-              <Button
-                type="button"
-                onClick={() => 
-                  //console.log(row.id + " -> " + row.fullNameEmployee)
-                  addMedcert.push(`/medcerts/${row.id}/${row.fullNameEmployee}`)
-                }
-                icon={<Aid color="accent-2" />}
-                plain
-              />              
             </Box>
           );
         },
       },
     ]}
-    data={workers}
+    data={clientes}
     />
   );
 }

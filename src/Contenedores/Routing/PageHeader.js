@@ -11,7 +11,7 @@ import LogoutButton from '../../Componentes/LogoutButton';
 
 const publicLinks = [
   { label: 'Inicio', to: '/', icon: <Home color="accent-2" /> },
-  { label: 'Registrarse', to: '/clientes', icon: <UserAdd color="accent-2" /> },  
+  { label: 'Registrarse', to: '/ncliente', icon: <UserAdd color="accent-2" /> },  
 ];
 
 /* Contendra todos los links que necesitan que el usuario inicie sesion*/

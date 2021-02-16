@@ -5,8 +5,9 @@ import Workers from '../Workers';
 import Medcerts from '../Medcerts';
 import Vermedcerts from '../Vermedcerts';
 import PrivateRoute from './PrivateRoute';
-/*import Profile from '../../Componentes/Profile';*/
 import Home from '../../Componentes/Home';
+import Clientes from '../Clientes';
+import NuevoCliente from '../NuevoCliente';
 
 function Routing() {
     return (
@@ -14,6 +15,14 @@ function Routing() {
             <Route exact path="/">
             <Home />
             </Route>
+
+            <Route path="/clientes">
+            <Clientes />
+            </Route>            
+
+            <Route path="/ncliente">
+            <NuevoCliente />
+            </Route>                        
             
             <PrivateRoute path="/workers">
                 <Workers />

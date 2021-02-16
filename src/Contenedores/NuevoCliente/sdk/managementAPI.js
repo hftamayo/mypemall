@@ -34,7 +34,7 @@ export function updateEntry(id, payload) {
       return entry.update();
     })
     .then((entry) => entry.publish())
-    .then((entry) => console.log(`Registro ${entry.sys.id} actualizado.`))
+    .then((entry) => console.log(`Entry ${entry.sys.id} updated.`))
     .catch(console.error);
 }
 
@@ -56,6 +56,6 @@ export function deleteEntry(id) {
     .then((environment) => environment.getEntry(id))
     .then((entry) => entry.unpublish())
     .then((entry) => entry.delete())
-    .then(() => console.log('Registro Eliminado.'))
+    .then(() => console.log('Entry deleted.'))
     .catch(console.error);
 }
