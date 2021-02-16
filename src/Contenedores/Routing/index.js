@@ -8,6 +8,7 @@ import PrivateRoute from './PrivateRoute';
 import Home from '../../Componentes/Home';
 import Clientes from '../Clientes';
 import NuevoCliente from '../NuevoCliente';
+import AccesoCredencial from '../AccesoCredencial';
 
 function Routing() {
     return (
@@ -22,7 +23,12 @@ function Routing() {
 
             <Route path="/ncliente">
             <NuevoCliente />
-            </Route>                        
+            </Route>      
+
+            <Route path="/acceder">
+            <AccesoCredencial />
+            </Route>      
+
             
             <PrivateRoute path="/workers">
                 <Workers />
