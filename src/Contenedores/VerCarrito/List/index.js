@@ -3,7 +3,7 @@ import { AddCircle, Refresh, StatusCritical } from 'grommet-icons';
 import React, { useContext } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { log } from '../../../utils';
-import { ProductosContext } from '../Context';
+import { VerCarritoContext } from '../Context';
 import { getEntries } from '../sdk/deliveryAPI';
 import { deleteEntry } from '../sdk/managementAPI';
 import Table from './Table';
@@ -11,7 +11,7 @@ import Table from './Table';
 function List() {
   const {
     current: [, setCurrent],
-  } = useContext(ProductosContext);
+  } = useContext(VerCarritoContext);
 
   const { data, isFetching, error, isLoading } = useQuery(
     'fetchProductos',
@@ -75,16 +75,6 @@ function List() {
           </Text>
         </Box>
       )}
-
-      <Box direction="row" gap="medium" justify="end">
-        <Button
-          type="button"
-          onClick={() => setCurrent({})}
-          label="Add"
-          icon={<AddCircle color="brand" />}
-          color="accent-1"
-        />
-      </Box>
 
       <Table
         productos={data}

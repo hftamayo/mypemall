@@ -1,19 +1,19 @@
 import React, { createContext, useState } from 'react';
 
-export const ProductosContext = createContext();
+export const VerCarritoContext = createContext();
 
-function ProductosProvider(props) {
+function VerCarritoProvider(props) {
   const [current, setCurrent] = useState({});
 
   return (
-    <ProductosContext.Provider
+    <VerCarritoContext.Provider
       value={{
         current: [current, setCurrent],
       }}
     >
       {props.children}
-    </ProductosContext.Provider>
+    </VerCarritoContext.Provider>
   );
 }
 
-export default ProductosProvider;
+export default VerCarritoProvider;
