@@ -21,10 +21,14 @@ const privateLinks = [
   { label: 'Ver carrito', to: '/vercarrito', icon: <DocumentStore color="accent-2" /> },
 ];
 
+const bofficeLinks = [
+  {label: 'Catalogo Clientes', to: '/clientes', icon: <Group color="accent-2" /> },
+  { label: 'Catalogo Productos', to: '/productos', icon: <DocumentStore color="accent-2" /> },
+];
 
 function PageHeader(props) {
-  const {isAuthenticated, isLoading} = useAuth0()
-  
+  const {isAuthenticated, isLoading, user} = useAuth0();
+  //const {name, email} = user;
   const location = useLocation();
   
   /* Mientras la pagina este cargando, no recornada nada */
@@ -36,10 +40,16 @@ function PageHeader(props) {
   let links = [...publicLinks];//Agregamos los links publicos
 
   if(isAuthenticated){//Solo si el usuario esta autenticado, agregamos los links privados
-    links = [...publicLinks, ...privateLinks];
+    const {name, email} = user;
+    if(email === "kodigo@kodigo.org.sv"){
+      links  = [...publicLinks, ...bofficeLinks];
+    }
+    else{
+      links = [...publicLinks, ...privateLinks];
+    }
+
   }
   
-
   return (
     <Header background="brand" pad="medium">
       <Nav direction="row">

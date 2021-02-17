@@ -15,7 +15,6 @@ function Form() {
   } = useContext(ClientesContext);
 
   const queryClient = useQueryClient();
-  const [message, setMessage] = useState('');
 
   const mutation = useMutation(
 
@@ -30,7 +29,6 @@ function Form() {
     {
       onSuccess: function () {
         log('Informacion', 'Accion completada');
-        setMessage(`Su solicitud ha sido registrada satisfactoriamente`);
         queryClient.invalidateQueries('fetchClientes');
         viewHome.push(`/`);
       },
