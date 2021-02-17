@@ -91,8 +91,15 @@ input, button, submit, select{
 
 /*Inicio Clases de "Home"*/
 .mainBody{
-  background-color: #2767de;
+  background-color: #106ca1;
   min-height: 26rem;
+}
+
+.centrar{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 /*Fin Clases de "Home"*/
 

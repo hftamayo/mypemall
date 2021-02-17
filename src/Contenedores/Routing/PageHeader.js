@@ -7,6 +7,7 @@ import { setNewTheme } from '../../redux/actions';
 import { themes } from '../../utils';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginButton from '../../Componentes/LoginButton';
+import AuthButton from '../../Componentes/AuthButton';
 import LogoutButton from '../../Componentes/LogoutButton';
 
 const publicLinks = [
@@ -16,9 +17,8 @@ const publicLinks = [
 
 /* Contendra todos los links que necesitan que el usuario inicie sesion*/
 const privateLinks = [
-  {label: 'Workers', to: '/workers', icon: <Group color="accent-2" /> },
-  { label: 'Medical Certificates', to: '/vermedcerts', icon: <DocumentStore color="accent-2" /> },
-  { label: 'Profile', to: '/profile', icon: <DocumentStore color="accent-2" /> },
+  {label: 'Catalogo compras', to: '/comprar', icon: <Group color="accent-2" /> },
+  { label: 'Ver carrito', to: '/vercarrito', icon: <DocumentStore color="accent-2" /> },
 ];
 
 
@@ -67,7 +67,7 @@ function PageHeader(props) {
       </Box>
       
       <Box justify="end">
-        <LoginButton/>
+        <AuthButton/>
         <LogoutButton/>
       </Box>
       

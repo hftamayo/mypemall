@@ -18,48 +18,36 @@ function Routing() {
     return (
         <Switch>
             <Route exact path="/">
-            <Home />
+                <Home />
             </Route>
 
-            <Route path="/clientes">
-            <Clientes />
-            </Route>            
-
             <Route path="/ncliente">
-            <NuevoCliente />
+                <NuevoCliente />
             </Route>      
 
-            <Route path="/acceder">
-            <AccesoCredencial />
-            </Route>      
+            <PrivateRoute path="/clientes">
+                <Clientes />
+            </PrivateRoute>            
 
-            <Route path="/productos">
-            <Productos />
-            </Route>                  
+            <PrivateRoute path="/acceder">
+                <AccesoCredencial />
+            </PrivateRoute>      
 
-            <Route path="/comprar">
-            <Comprar />
-            </Route>          
+            <PrivateRoute path="/productos">
+                <Productos />
+            </PrivateRoute>                  
 
-            <Route path="/detallecompra/:idProd/:nProd">
-            <DetallesCompra />
-            </Route>                      
+            <PrivateRoute path="/comprar">
+                <Comprar />
+            </PrivateRoute>          
 
-            <Route path="/vercarrito">
-            <VerCarrito />
-            </Route>                              
-            
-            <PrivateRoute path="/workers">
-                <Workers />
-            </PrivateRoute>
-            
-            <PrivateRoute path="/medcerts/:idEmp/:fnEmp">
-                <Medcerts />
-            </PrivateRoute>
-            
-            <PrivateRoute path="/vermedcerts">
-                <Vermedcerts />
-            </PrivateRoute>
+            <PrivateRoute path="/detallecompra/:idProd/:nProd">
+                <DetallesCompra />
+            </PrivateRoute>                      
+
+            <PrivateRoute path="/vercarrito">
+                <VerCarrito />
+            </PrivateRoute>                              
         </Switch>
     );
 }
