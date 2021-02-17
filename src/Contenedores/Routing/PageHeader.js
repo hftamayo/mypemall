@@ -5,7 +5,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setNewTheme } from '../../redux/actions';
 import { themes } from '../../utils';
-import { useAuth0 } from '@auth0/auth0-react';
+//import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth } from './auth';
 import LoginButton from '../../Componentes/LoginButton';
 import LogoutButton from '../../Componentes/LogoutButton';
 
@@ -16,18 +17,17 @@ const publicLinks = [
 
 /* Contendra todos los links que necesitan que el usuario inicie sesion*/
 const privateLinks = [
-  {label: 'Workers', to: '/workers', icon: <Group color="accent-2" /> },
-  { label: 'Medical Certificates', to: '/vermedcerts', icon: <DocumentStore color="accent-2" /> },
-  { label: 'Profile', to: '/profile', icon: <DocumentStore color="accent-2" /> },
+  {label: 'Catalogo Productos', to: '/comprar', icon: <Group color="accent-2" /> },
+  { label: 'Ver carrito', to: '/vercarrito', icon: <DocumentStore color="accent-2" /> },
 ];
 
 
 function PageHeader(props) {
-  const {isAuthenticated, isLoading} = useAuth0()
+  const {isAuthenticated, isLoading} = useAuth()
   
   const location = useLocation();
   
-  /* Mientras la pagina este cargando, no recornada nada */
+  /* Mientras la pagina este cargando, suelta las credenciales */
   if(isLoading){
     return null;
   }

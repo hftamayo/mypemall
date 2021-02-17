@@ -1,10 +1,11 @@
 import React from 'react'
-import { useAuth0 } from '@auth0/auth0-react';
+//import { useAuth0 } from '@auth0/auth0-react';
 import { Redirect, Route } from 'react-router-dom';
+import { useAuth } from './auth';
 
 /* Crea una ruta privada, donde si el usuario esta autenticado, muestra el link seleccionado */
 function PrivateRoute({children, ...rest}) {
-    const {isAuthenticated, isLoading} = useAuth0()
+    const {isAuthenticated, isLoading} = useAuth()
 
     return (
         <Route {...rest}>

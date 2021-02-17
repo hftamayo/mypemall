@@ -1,9 +1,6 @@
 import React from 'react';
 /*import { HashRouter, Route, Switch } from "react-router-dom";*/
 import { Route, Switch } from "react-router-dom";
-import Workers from '../Workers';
-import Medcerts from '../Medcerts';
-import Vermedcerts from '../Vermedcerts';
 import PrivateRoute from './PrivateRoute';
 import Home from '../../Componentes/Home';
 import Clientes from '../Clientes';
@@ -13,6 +10,7 @@ import Productos from '../Productos';
 import Comprar from '../Comprar';
 import DetallesCompra from '../DetallesCompra';
 import VerCarrito from '../VerCarrito';
+import { AuthContext } from './auth';
 
 function Routing() {
     return (
@@ -20,10 +18,6 @@ function Routing() {
             <Route exact path="/">
             <Home />
             </Route>
-
-            <Route path="/clientes">
-            <Clientes />
-            </Route>            
 
             <Route path="/ncliente">
             <NuevoCliente />
@@ -33,33 +27,26 @@ function Routing() {
             <AccesoCredencial />
             </Route>      
 
-            <Route path="/productos">
+            <Route path="/clientes">
+            <Clientes />
+            </Route>                        
+
+            <PrivateRoute path="/productos">
             <Productos />
-            </Route>                  
+            </PrivateRoute>                  
 
-            <Route path="/comprar">
+            <PrivateRoute path="/comprar">
             <Comprar />
-            </Route>          
+            </PrivateRoute>          
 
-            <Route path="/detallecompra/:idProd/:nProd">
+            <PrivateRoute path="/detallecompra/:idProd/:nProd">
             <DetallesCompra />
-            </Route>                      
+            </PrivateRoute>                      
 
-            <Route path="/vercarrito">
+            <PrivateRoute path="/vercarrito">
             <VerCarrito />
-            </Route>                              
-            
-            <PrivateRoute path="/workers">
-                <Workers />
-            </PrivateRoute>
-            
-            <PrivateRoute path="/medcerts/:idEmp/:fnEmp">
-                <Medcerts />
-            </PrivateRoute>
-            
-            <PrivateRoute path="/vermedcerts">
-                <Vermedcerts />
-            </PrivateRoute>
+            </PrivateRoute>                              
+
         </Switch>
     );
 }
