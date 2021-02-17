@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Header, Nav, Select, Text } from 'grommet';
-import { DocumentStore, Group, UserAdd, Home } from 'grommet-icons';
+import { UserAdd, Home, Book, Cart, Shop } from 'grommet-icons';
 import { Link, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setNewTheme } from '../../redux/actions';
@@ -17,13 +17,13 @@ const publicLinks = [
 
 /* Contendra todos los links que necesitan que el usuario inicie sesion*/
 const privateLinks = [
-  {label: 'Catalogo compras', to: '/comprar', icon: <Group color="accent-2" /> },
-  { label: 'Ver carrito', to: '/vercarrito', icon: <DocumentStore color="accent-2" /> },
+  {label: 'Catalogo compras', to: '/comprar', icon: <Shop color="accent-2" /> },
+  { label: 'Ver carrito', to: '/vercarrito', icon: <Cart color="accent-2" /> },
 ];
 
 const bofficeLinks = [
-  {label: 'Catalogo Clientes', to: '/clientes', icon: <Group color="accent-2" /> },
-  { label: 'Catalogo Productos', to: '/productos', icon: <DocumentStore color="accent-2" /> },
+  {label: 'Clientes', to: '/clientes', icon: <Book color="accent-2" /> },
+  { label: 'Productos', to: '/productos', icon: <Book color="accent-2" /> },
 ];
 
 function PageHeader(props) {
