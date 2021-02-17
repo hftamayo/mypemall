@@ -1,6 +1,6 @@
 import { Box, Text } from 'grommet';
 import { StatusCritical, StatusGood } from 'grommet-icons';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import { log } from '../../../utils';
 import { ClientesContext } from '../Context';
@@ -15,6 +15,7 @@ function Form() {
   } = useContext(ClientesContext);
 
   const queryClient = useQueryClient();
+  const [message, setMessage] = useState('');
 
   const mutation = useMutation(
 
@@ -29,6 +30,7 @@ function Form() {
     {
       onSuccess: function () {
         log('Informacion', 'Accion completada');
+        setMessage(`Su solicitud ha sido registrada satisfactoriamente`);
         queryClient.invalidateQueries('fetchClientes');
         viewHome.push(`/`);
       },
@@ -78,7 +80,6 @@ function Form() {
           </Text>
         </Box>
       )}
-
       <FormLayout
         onSubmit={onSubmit}
         currentValues={current}
