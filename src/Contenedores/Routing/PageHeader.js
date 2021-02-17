@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Header, Nav, Select, Text } from 'grommet';
-import { DocumentStore, Group, UserAdd, Home } from 'grommet-icons';
+import { UserAdd, Home, Book, Cart, Shop } from 'grommet-icons';
 import { Link, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setNewTheme } from '../../redux/actions';
@@ -8,6 +8,7 @@ import { themes } from '../../utils';
 //import { useAuth0 } from '@auth0/auth0-react';
 import { useAuth } from './auth';
 import LoginButton from '../../Componentes/LoginButton';
+import AuthButton from '../../Componentes/AuthButton';
 import LogoutButton from '../../Componentes/LogoutButton';
 
 const publicLinks = [
@@ -17,14 +18,28 @@ const publicLinks = [
 
 /* Contendra todos los links que necesitan que el usuario inicie sesion*/
 const privateLinks = [
+<<<<<<< HEAD
   {label: 'Catalogo Productos', to: '/comprar', icon: <Group color="accent-2" /> },
   { label: 'Ver carrito', to: '/vercarrito', icon: <DocumentStore color="accent-2" /> },
+=======
+  {label: 'Catalogo compras', to: '/comprar', icon: <Shop color="accent-2" /> },
+  { label: 'Ver carrito', to: '/vercarrito', icon: <Cart color="accent-2" /> },
+>>>>>>> experimental
 ];
 
+const bofficeLinks = [
+  {label: 'Clientes', to: '/clientes', icon: <Book color="accent-2" /> },
+  { label: 'Productos', to: '/productos', icon: <Book color="accent-2" /> },
+];
 
 function PageHeader(props) {
+<<<<<<< HEAD
   const {isAuthenticated, isLoading} = useAuth()
   
+=======
+  const {isAuthenticated, isLoading, user} = useAuth0();
+  //const {name, email} = user;
+>>>>>>> experimental
   const location = useLocation();
   
   /* Mientras la pagina este cargando, suelta las credenciales */
@@ -36,10 +51,16 @@ function PageHeader(props) {
   let links = [...publicLinks];//Agregamos los links publicos
 
   if(isAuthenticated){//Solo si el usuario esta autenticado, agregamos los links privados
-    links = [...publicLinks, ...privateLinks];
+    const {name, email} = user;
+    if(email === "kodigo@kodigo.org.sv"){
+      links  = [...publicLinks, ...bofficeLinks];
+    }
+    else{
+      links = [...publicLinks, ...privateLinks];
+    }
+
   }
   
-
   return (
     <Header background="brand" pad="medium">
       <Nav direction="row">
@@ -67,7 +88,7 @@ function PageHeader(props) {
       </Box>
       
       <Box justify="end">
-        <LoginButton/>
+        <AuthButton/>
         <LogoutButton/>
       </Box>
       

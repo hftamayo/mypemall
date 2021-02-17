@@ -16,17 +16,22 @@ function Routing() {
     return (
         <Switch>
             <Route exact path="/">
-            <Home />
+                <Home />
             </Route>
 
             <Route path="/ncliente">
-            <NuevoCliente />
+                <NuevoCliente />
             </Route>      
 
-            <Route path="/acceder">
-            <AccesoCredencial />
-            </Route>      
+            <PrivateRoute path="/clientes">
+                <Clientes />
+            </PrivateRoute>            
 
+            <PrivateRoute path="/acceder">
+                <AccesoCredencial />
+            </PrivateRoute>      
+
+<<<<<<< HEAD
             <Route path="/clientes">
             <Clientes />
             </Route>                        
@@ -47,6 +52,23 @@ function Routing() {
             <VerCarrito />
             </PrivateRoute>                              
 
+=======
+            <PrivateRoute path="/productos">
+                <Productos />
+            </PrivateRoute>                  
+
+            <PrivateRoute path="/comprar">
+                <Comprar />
+            </PrivateRoute>          
+
+            <PrivateRoute path="/detallecompra/:idProd/:nProd">
+                <DetallesCompra />
+            </PrivateRoute>                      
+
+            <PrivateRoute path="/vercarrito">
+                <VerCarrito />
+            </PrivateRoute>                              
+>>>>>>> experimental
         </Switch>
     );
 }
