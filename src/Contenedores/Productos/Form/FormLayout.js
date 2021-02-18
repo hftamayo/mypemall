@@ -1,4 +1,4 @@
-import { Box, Button, DateInput, Form, FormField, TextInput } from 'grommet';
+import { Box, Button, Form, FormField, TextInput } from 'grommet';
 import React from 'react';
 
 function FormLayout({ onSubmit, currentValues }) {

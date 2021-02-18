@@ -1,10 +1,10 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { Box, Button, DataTable, Text } from 'grommet';
-import { Actions, Aid } from 'grommet-icons';
+//import { useHistory } from 'react-router-dom';
+import { DataTable, Text } from 'grommet';
+//import { Actions, Aid } from 'grommet-icons';
 
 function Table({ productos, setCurrent, deleteProducto }) {
-  const addComprar = useHistory();
+  //const addComprar = useHistory();
   return (
     <DataTable
     columns={[

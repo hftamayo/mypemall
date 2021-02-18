@@ -1,9 +1,6 @@
 import React from 'react';
 /*import { HashRouter, Route, Switch } from "react-router-dom";*/
 import { Route, Switch } from "react-router-dom";
-import Workers from '../Workers';
-import Medcerts from '../Medcerts';
-import Vermedcerts from '../Vermedcerts';
 import PrivateRoute from './PrivateRoute';
 import Home from '../../Componentes/Home';
 import Clientes from '../Clientes';

@@ -1,11 +1,11 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+//import { useHistory } from 'react-router-dom';
 import { Box, Button, DataTable, Text } from 'grommet';
 import { Actions, FormClose, FormEdit } from 'grommet-icons';
 import { DateTime } from 'luxon';
 
 function Table({ clientes, setCurrent, deleteCliente }) {
-  const addCliente = useHistory();
+  //const addCliente = useHistory();
   return (
     <DataTable
     columns={[

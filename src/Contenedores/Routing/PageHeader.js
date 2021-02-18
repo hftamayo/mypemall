@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { setNewTheme } from '../../redux/actions';
 import { themes } from '../../utils';
 import { useAuth0 } from '@auth0/auth0-react';
-import LoginButton from '../../Componentes/LoginButton';
+//import LoginButton from '../../Componentes/LoginButton';
 import AuthButton from '../../Componentes/AuthButton';
 import LogoutButton from '../../Componentes/LogoutButton';
 
@@ -40,7 +40,7 @@ function PageHeader(props) {
   let links = [...publicLinks];//Agregamos los links publicos
 
   if(isAuthenticated){//Solo si el usuario esta autenticado, agregamos los links privados
-    const {name, email} = user;
+    const { email } = user;
     if(email === "kodigo@kodigo.org.sv"){
       links  = [...publicLinks, ...bofficeLinks];
     }
