@@ -12,8 +12,6 @@ import { Auth0Provider } from '@auth0/auth0-react'
 const domain = 'dev-6s99fvic.us.auth0.com';
 const clientId = 'CWZW3YcaU5A8rPlbeaqnTRufcaIOpzQJ';
 const redirectUri = window.location.origin;
-const audience = "https://dev-focus-react.us.auth0.com/api/v2/";
-const scope = "read:current_user update:current_user_metadata";
 
 
 ReactDOM.render(

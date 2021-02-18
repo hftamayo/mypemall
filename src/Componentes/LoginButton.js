@@ -4,7 +4,7 @@ import { Button} from 'grommet';
 import { useHistory } from 'react-router-dom';
 const LoginButton = () => {
 
-    const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
+    const { isAuthenticated, isLoading } = useAuth0();
     const viewValidar = useHistory();
     return (
         !isAuthenticated && !isLoading ?
