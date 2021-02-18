@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Box, Button, DataTable, Text } from 'grommet';
-import { Actions, Aid } from 'grommet-icons';
+import { Actions, Gift } from 'grommet-icons';
 
 function Table({ productos, setCurrent, deleteProducto }) {
   const addComprar = useHistory();
@@ -23,7 +23,7 @@ function Table({ productos, setCurrent, deleteProducto }) {
                 onClick={() => 
                   addComprar.push(`/detallecompra/${row.id}/${row.nombreProducto}`)
                 }
-                icon={<Aid color="accent-2" />}
+                icon={<Gift color="accent-2" />}
                 plain
               />              
             </Box>
