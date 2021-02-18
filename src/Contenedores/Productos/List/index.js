@@ -1,5 +1,5 @@
-import { Box, Button, Text } from 'grommet';
-import { AddCircle, Refresh, StatusCritical } from 'grommet-icons';
+import { Box, Text } from 'grommet';
+import { Refresh, StatusCritical } from 'grommet-icons';
 import React, { useContext } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { log } from '../../../utils';
@@ -75,16 +75,6 @@ function List() {
           </Text>
         </Box>
       )}
-
-      <Box direction="row" gap="medium" justify="end">
-        <Button
-          type="button"
-          onClick={() => setCurrent({})}
-          label="Add"
-          icon={<AddCircle color="brand" />}
-          color="accent-1"
-        />
-      </Box>
 
       <Table
         productos={data}

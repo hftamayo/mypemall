@@ -76,16 +76,6 @@ function List() {
         </Box>
       )}
 
-      <Box direction="row" gap="medium" justify="end">
-        <Button
-          type="button"
-          onClick={() => setCurrent({})}
-          label="Add"
-          icon={<AddCircle color="brand" />}
-          color="accent-1"
-        />
-      </Box>
-
       <Table
         clientes={data}
         setCurrent={setCurrentCliente}

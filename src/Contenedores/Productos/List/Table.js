@@ -8,7 +8,7 @@ function Table({ productos, setCurrent, deleteProducto }) {
   return (
     <DataTable
     columns={[
-      { property: 'codigoProducto', primary: true, header: <Text>Afiliado</Text> },
+      { property: 'codigoProducto', primary: true, header: <Text>Codigo</Text> },
       { property: 'nombreProducto', header: <Text>Producto</Text> },
       { property: 'precioVentaProducto', header: <Text>Precio</Text> },
       { property: 'cantidadProducto', header: <Text>Cantidad</Text> },
