@@ -27,13 +27,13 @@ In the next series of videos, the user may have an idea how to use the applicati
 
 In the next video the user may have access to the project's summary and the expected results. In the next sections, there are specific videos to help the user to understand specific tasks :
 
-[1. Accesing and register a user's account](https://youtu.be/DFAr6zs6nro)
+[1. Accesing and register a user's account](https://youtu.be/26WtrvtsHZs)
 
-[2. Login credentials](https://youtu.be/DFAr6zs6nro)
+[2. Login credentials](https://youtu.be/V92OQ4jRC8o)
 
-[3. Backend operations](https://youtu.be/DFAr6zs6nro)
+[3. Backend operations](https://youtu.be/w_xmEbb41x0)
 
-[4. Shopping operations](https://youtu.be/DFAr6zs6nro)
+[4. Shopping operations](https://youtu.be/n7tM2QOqC6M)
 
 
 ### 4. Technical details
