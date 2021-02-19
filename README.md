@@ -37,22 +37,40 @@ In the next video the user may have access to the project's summary and the expe
 
 
 ### 4. Technical details
-    1. *Authentication*: Auth0, in short term: authentication module from scratch
+    1. Authentication: Auth0, in short term: authentication module from scratch
 
-    2. *Front End*: React JS: redux, grommet, react-query
+    2. Front End: React JS: redux, grommet, react-query
 
-    3. *Back End*: Contentful, in short term: Node JS
+    3. Back End: Contentful, in short term: Node JS
 
-    4. *Deployment*: Netlify
+    4. Deployment: Netlify
 
 
 ### 5. Future improvements
-    1. Selection of the best model and click on Deploy:
+    
+A. BackOffice: 
+    -Clientes:
+        1. comparar claves
+        2. no borrar clientes que tienen compras pendientes
+        3. edicion de datos
+        4. validar patron de las claves
 
-    2. Deploy on Azure Container Instance and enable authentication:
+    -Productos:
+        1. float en el precio
+        2. foto para el producto
+        3. Despues de agregar no refresca la tabla en ciertas ocasiones, talvez se deba al proxy
 
-    3. Confirmation of “success” of the process of deploy:
+B. Compras:
+        1. Validar que la fecha de compra no sea mayor a la actual
+        2.  agregar por default la fecha del sistema
+        4. validar que los items a comprar no sean mas de los disponibles
 
-    4. Checking the “Endpoint” option on ML Studio (by default the application insights are disabled):
+C. Carrito:
+        1. eliminar items
+        2. mostrar los items exclusivamente del cliente
+        3. desarrollar las funciones de pagar
 
-    5. Details how to “consume” the Endpoint:
+D. General:
+        1. Paginacion, ordenamiento columnas
+    
+    
