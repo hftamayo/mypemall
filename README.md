@@ -61,15 +61,15 @@ In the next video the user may have access to the project's summary and the expe
         3. Despues de agregar no refresca la tabla en ciertas ocasiones, talvez se deba al proxy
 
 2. Compras:
-        1. Validar que la fecha de compra no sea mayor a la actual
-        2.  agregar por default la fecha del sistema
-        4. validar que los items a comprar no sean mas de los disponibles
+    1. Validar que la fecha de compra no sea mayor a la actual
+    2.  agregar por default la fecha del sistema
+    4. validar que los items a comprar no sean mas de los disponibles
 
 3. Carrito:
-        1. eliminar items
-        2. mostrar los items exclusivamente del cliente
-        3. desarrollar las funciones de pagar
+    1. eliminar items
+    2. mostrar los items exclusivamente del cliente
+    3. desarrollar las funciones de pagar
 
 4. General:
-        1. Paginacion, ordenamiento columnas
+    1. Paginacion, ordenamiento columnas
     
