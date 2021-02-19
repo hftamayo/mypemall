@@ -48,29 +48,28 @@ In the next video the user may have access to the project's summary and the expe
 
 ### 5. Future improvements
     
-A. BackOffice: 
-    -Clientes:
+1. BackOffice: 
+    1. Clientes:
         1. comparar claves
         2. no borrar clientes que tienen compras pendientes
         3. edicion de datos
         4. validar patron de las claves
 
-    -Productos:
+    2. Productos:
         1. float en el precio
         2. foto para el producto
         3. Despues de agregar no refresca la tabla en ciertas ocasiones, talvez se deba al proxy
 
-B. Compras:
+2. Compras:
         1. Validar que la fecha de compra no sea mayor a la actual
         2.  agregar por default la fecha del sistema
         4. validar que los items a comprar no sean mas de los disponibles
 
-C. Carrito:
+3. Carrito:
         1. eliminar items
         2. mostrar los items exclusivamente del cliente
         3. desarrollar las funciones de pagar
 
-D. General:
+4. General:
         1. Paginacion, ordenamiento columnas
-    
     
