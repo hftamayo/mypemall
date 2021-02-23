@@ -6,7 +6,7 @@ import Form from './Form';
 function DetallesCompra() {
   return (
     <DetallesCompraProvider>
-      <Box direction="row" pad="medium" gap="medium">
+      <Box direction="row" pad="medium" gap="medium" alignSelf="center">
         <Form />
       </Box>
     </DetallesCompraProvider>

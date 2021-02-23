@@ -7,9 +7,14 @@ import { DetallesCompraContext } from '../Context';
 import { createEntry, updateEntry } from '../sdk/managementAPI';
 import FormLayout from './FormLayout';
 import { useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function Form() {
   const viewComprar = useHistory();
+  const { nProd }  =  useParams();
+  const { user } = useAuth0();
+  const { email } = user;
   const {
     current: [current],
   } = useContext(DetallesCompraContext);
@@ -43,16 +48,21 @@ function Form() {
   const isAddMode = !current.id;
 
   const onSubmit = (values) => {
-    console.log('valores enviados', values);
+    //console.log('valores enviados', values);
+
+    const min = 1;
+    const max = 100;
+    const tmpCodigo = Math.trunc(min + Math.random() * (max - min));
 
     const payload = {
-      //casting de objetos text que en el backend son int
      ...values,
-     codigoCompra: parseInt(values.codigoCompra, 10),
+     //codigoCompra: parseInt(values.codigoCompra, 10),
      cantidadItemCompra: parseInt(values.cantidadItemCompra, 10),
-     codigoProducto: parseInt(values.codigoProducto, 10),
-     codigoCliente: parseInt(values.codigoCliente, 10),
+     codigoProducto: nProd,
+     codigoCliente: email,
+     codigoCompra: tmpCodigo,
     };
+    
     console.log({ values, payload });
 
     if (isAddMode) {

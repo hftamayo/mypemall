@@ -13,6 +13,7 @@
     "contentful-management": "^7.5.1",
     "formik": "^2.2.6",
     "grommet": "^2.16.2",
+    "grommet-controls": "^3.0.1",
     "luxon": "^1.25.0",
     "netlify-cli": "^2.71.0",
     "react": "^17.0.1",

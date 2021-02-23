@@ -1,4 +1,5 @@
 import { Box, Button, DateInput, Form, FormField, TextInput } from 'grommet';
+import { PasswordInput } from 'grommet-controls';
 import React from 'react';
 
 function FormLayout({ onSubmit, currentValues }) {
@@ -43,13 +44,13 @@ function FormLayout({ onSubmit, currentValues }) {
       </FormField>
 
       <FormField label="Clave" name="lblclaveCliente">
-        <TextInput name="claveCliente" />
+        <PasswordInput name="claveCliente" />
       </FormField>
-
+{/*
       <FormField label="Confirmar Clave" name="lblcclaveCliente">
         <TextInput name="cclaveCliente" />
       </FormField>
-
+*/}
       <Box direction="row" justify="between" margin={{ top: 'medium' }}>
         <Button type="reset" label="Resetear" />
         <Button type="submit" label="Guardar" primary />

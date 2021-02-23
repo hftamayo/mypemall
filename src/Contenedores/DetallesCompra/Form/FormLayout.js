@@ -1,6 +1,7 @@
 import { Box, Button, DateInput, Form, FormField, TextInput } from 'grommet';
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function FormLayout({ onSubmit, currentValues }) {
   const defaultValues = {
@@ -9,6 +10,10 @@ function FormLayout({ onSubmit, currentValues }) {
 
   const [value, setValue] = React.useState(defaultValues);
   const { idProd, nProd }  =  useParams();
+  /* obtencion de info de la sesion */
+  const { user } = useAuth0();
+  const { email } = user;
+
   return (
     <Form
       value={value}
@@ -22,14 +27,13 @@ function FormLayout({ onSubmit, currentValues }) {
         onSubmit(event.value);
       }}
     >
-      <div>
-        <p>ID de la Compra: <b><i>{ idProd }</i></b>
-        , Nombre del Producto: <b><i>{ nProd }</i></b></p>
-      </div>
-
-      <FormField label="Codigo Compra" name="lblcodigoCompra">
-        <TextInput name="codigoCompra" />
-      </FormField>
+    <div>
+      <p>
+            ID de la Compra: <b><i>{ idProd }</i></b><br />
+            Nombre del Producto: <b><i>{ nProd }</i></b><br />
+            Cliente: <b><i>{ email }</i></b><br />
+      </p>
+    </div>
 
       <FormField label="Fecha Compra" name="lblfechaCompra">
         <DateInput name="fechaCompra" format="yyyy-mm-dd" />
@@ -37,14 +41,6 @@ function FormLayout({ onSubmit, currentValues }) {
 
       <FormField label="No Items" name="lblcantidadItemCompra">
         <TextInput name="cantidadItemCompra" />
-      </FormField>
-
-      <FormField label="Codigo Producto" name="lblcodigoProducto">
-        <TextInput name="codigoProducto" />
-      </FormField>      
-
-      <FormField label="Codigo Cliente" name="lblcodigoCliente">
-        <TextInput name="codigoCliente" />
       </FormField>
 
       <Box direction="row" justify="between" margin={{ top: 'medium' }}>
