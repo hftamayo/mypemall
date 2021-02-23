@@ -5,9 +5,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setNewTheme } from '../../redux/actions';
 import { themes } from '../../utils';
-import { useAuth0 } from '@auth0/auth0-react';
-//import LoginButton from '../../Componentes/LoginButton';
-import AuthButton from '../../Componentes/AuthButton';
+//import { useAuth0 } from '@auth0/auth0-react';
+import LoginButton from '../../Componentes/LoginButton';
+//import AuthButton from '../../Componentes/AuthButton';
 import LogoutButton from '../../Componentes/LogoutButton';
 
 const publicLinks = [
@@ -27,18 +27,19 @@ const bofficeLinks = [
 ];
 
 function PageHeader(props) {
-  const {isAuthenticated, isLoading, user} = useAuth0();
+  //const {isAuthenticated, isLoading, user} = useAuth0();
   //const {name, email} = user;
   const location = useLocation();
   
   /* Mientras la pagina este cargando, no recornada nada */
+  /*
   if(isLoading){
     return null;
   }
-
+*/
 
   let links = [...publicLinks];//Agregamos los links publicos
-
+/*
   if(isAuthenticated){//Solo si el usuario esta autenticado, agregamos los links privados
     const { email } = user;
     if(email === "kodigo@kodigo.org.sv"){
@@ -47,9 +48,11 @@ function PageHeader(props) {
     else{
       links = [...publicLinks, ...privateLinks];
     }
-
   }
-  
+  */
+ if(1 == 1){//Solo si el usuario esta autenticado, agregamos los links privados
+    links = [...publicLinks, ...privateLinks];
+}
   return (
     <Header background="brand" pad="medium">
       <Nav direction="row">
@@ -77,7 +80,7 @@ function PageHeader(props) {
       </Box>
       
       <Box justify="end">
-        <AuthButton/>
+        <LoginButton/>
         <LogoutButton/>
       </Box>
       

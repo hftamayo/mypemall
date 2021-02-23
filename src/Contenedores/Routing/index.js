@@ -22,13 +22,13 @@ function Routing() {
                 <NuevoCliente />
             </Route>      
 
+            <Route path="/acceder">
+                <AccesoCredencial />
+            </Route>                  
+
             <PrivateRoute path="/clientes">
                 <Clientes />
             </PrivateRoute>            
-
-            <PrivateRoute path="/acceder">
-                <AccesoCredencial />
-            </PrivateRoute>      
 
             <PrivateRoute path="/productos">
                 <Productos />
