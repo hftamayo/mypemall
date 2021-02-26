@@ -22,7 +22,11 @@ function FormLayout({ onSubmit, defaultValues }) {
 
     onSubmit: (values) => {
       onSubmit(values);
-    }
+    },
+
+    onReset: (resetForm) => {
+      resetForm({values: ""})
+    },
   });
 
   const [value, setValue] = React.useState(defaultValues);
@@ -30,7 +34,7 @@ function FormLayout({ onSubmit, defaultValues }) {
   return (
     <Form
       value={value}
-      onReset={() => setValue(formik.initialValues)}
+      onReset={formik.handleReset}
       onSubmit={formik.handleSubmit}
     >
       <FormField label="Correo Electronico" name="lblcorreoeCliente">
