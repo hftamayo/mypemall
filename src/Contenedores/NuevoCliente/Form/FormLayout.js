@@ -50,12 +50,11 @@ function FormLayout({ onSubmit, currentValues }) {
   const defaultValues = {
     ...currentValues,
   };
-  const [value, setValue] = React.useState(defaultValues);
+  const [value] = React.useState(defaultValues);
   
   return (
     <Form
       value={value}
-      onReset={() => setValue(defaultValues)}
       onSubmit={formik.handleSubmit}
     >
       <FormField label="Codigo Afiliado" name="lblcodigoCliente">
@@ -106,6 +105,9 @@ function FormLayout({ onSubmit, currentValues }) {
         (<p style={{color:"red"}}>{formik.errors.correoeCliente}</p>)}
       </FormField>
 
+      {/* el formato de la fecha depende 
+      de la config local del cliente*/}
+
       <FormField label="Fecha Nacimiento" name="lblfnaCliente">
         <input 
         type="date"
@@ -142,7 +144,8 @@ function FormLayout({ onSubmit, currentValues }) {
       </FormField>
 
       <Box direction="row" justify="between" margin={{ top: 'medium' }}>
-        <Button type="reset" label="Resetear" />
+        <Button type="reset" label="Resetear"
+          onClick={ e => formik.resetForm()} />
         <Button type="submit" label="Guardar" primary />
       </Box>
     </Form>
