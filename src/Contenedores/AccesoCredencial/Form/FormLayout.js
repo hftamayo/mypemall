@@ -24,17 +24,13 @@ function FormLayout({ onSubmit, defaultValues }) {
       onSubmit(values);
     },
 
-    onReset: (resetForm) => {
-      resetForm({values: ""})
-    },
   });
 
-  const [value, setValue] = React.useState(defaultValues);
+  const [value] = React.useState(defaultValues);
   
   return (
     <Form
       value={value}
-      onReset={formik.handleReset}
       onSubmit={formik.handleSubmit}
     >
       <FormField label="Correo Electronico" name="lblcorreoeCliente">
@@ -65,7 +61,8 @@ function FormLayout({ onSubmit, defaultValues }) {
       </FormField>
 
       <Box direction="row" justify="between" margin={{ top: 'medium' }}>
-        <Button type="reset" label="Resetear" />
+        <Button type="reset" label="Resetear"
+        onClick={ e => formik.resetForm()} />
         <Button type="submit" label="Validar" primary />
       </Box>
     </Form>
