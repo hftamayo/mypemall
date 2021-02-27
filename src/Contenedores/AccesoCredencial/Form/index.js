@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import { log } from '../../../utils';
 import { ClientesContext } from '../Context';
-import { createEntry } from '../sdk/managementAPI';
+import { validateEntry } from '../sdk/managementAPI';
 import FormLayout from './FormLayout';
 import { useHistory } from 'react-router-dom';
 
@@ -18,17 +18,15 @@ function Form() {
 
   const mutation = useMutation(
 
-   function ({ data, codigoCliente }) {
-    if (!codigoCliente) {
-      return createEntry(data);
-    } else {
-      //return updateEntry(idMedcert, data);
+   function ({ data, correoCliente }) {
+    if (!correoeCliente) {
+      return validateEntry(data);
     }
   },
 
     {
       onSuccess: function () {
-        log('Informacion', 'Accion completada');
+        log('Informacion', 'Credenciales validadas');
         queryClient.invalidateQueries('fetchClientes');
         viewHome.push(`/`);
       },
@@ -39,42 +37,24 @@ function Form() {
     }
   );
 
-  const isAddMode = !current.id;
-
   const onSubmit = (values) => {
     console.log('valores enviados', values);
 
     const payload = {
       //casting de objetos text que en el backend son int
-     ...values,
-     codigoCliente: parseInt(values.idMedCert, 10),
+     ...values
     };
-    delete payload.cclaveCliente;
-    delete payload.id;
-
     console.log({ values, payload });
 
-    if (isAddMode) {
-      mutation.mutate({ data: payload });
-    } else {
-      mutation.mutate({ data: payload, codigoCliente: current.id});
-    }
+    mutation.mutate({ data: payload });
   };
 
   return (
     <Box pad="medium" elevation="medium" gap="small" width="large">
-      {mutation.isSuccess && (
-        <Box direction="row" gap="medium">
-          <Text color="brand">
-            El perfil del cliente ha sido creado! <StatusGood color="brand" />
-          </Text>
-        </Box>
-      )}
-
       {mutation.isError && (
         <Box direction="row" gap="medium">
           <Text color="accent-1">
-            Ha ocurrido un error en la creacion del perfil <StatusCritical color="accent-1" />
+            Las credenciales son erroneas. Verifique <StatusCritical color="accent-1" />
           </Text>
         </Box>
       )}
